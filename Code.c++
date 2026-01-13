@@ -45,3 +45,5 @@ double backward_diff2(Func f, double x, double h) {
 double central_diff2(Func f, double x, double h) {
     return (f(x + h) - 2 * f(x) + f(x - h)) / (h * h);
 }
+
+// now write the code of your part here . then save it by cntrl s. 
