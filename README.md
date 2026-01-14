@@ -1,137 +1,122 @@
-# Numerical Differentiation using Finite Difference Methods
 
-This project is a group assignment for the Numerical Methods course.  
-It implements **finite difference methods** to approximate the **first and second
-derivatives** of mathematical functions and compares the numerical results with
-their **exact analytical derivatives**.
+Numerical Differentiation using Finite Difference Methods
+Project Title
 
-The main objective of this project is to analyze the **accuracy and error behavior**
-of different numerical differentiation methods.
+Numerical Differentiation – Forward, Backward & Central Difference Methods
 
----
+Project Overview
 
-## 📌 Methods Implemented
+This project is developed as part of the Numerical Methods (CSE261) course.
+It implements numerical differentiation techniques using Forward Difference, Backward Difference and Central Difference methods to approximate the first and second derivatives of functions.
 
-The following finite difference methods are implemented:
+Numerical differentiation is essential when analytical differentiation is difficult or when function values are only available at discrete points.
 
-### First Derivative
-- Forward Difference  
-- Backward Difference  
-- Central Difference  
+Objectives
 
-### Second Derivative
-- Forward Difference  
-- Backward Difference  
-- Central Difference  
+The objectives of this project are:
 
----
+To implement Forward, Backward and Central Difference methods in C++
 
-## 🧮 Test Functions
+To compute first and second derivatives numerically
 
-The program supports the following test functions:
+To compare numerical results with exact analytical derivatives
 
-| Function | Exact First Derivative | Exact Second Derivative |
-|--------|-----------------------|------------------------|
-| \( \sin(x) \) | \( \cos(x) \) | \( -\sin(x) \) |
-| \( e^x \) | \( e^x \) | \( e^x \) |
-| \( x^3 \) | \( 3x^2 \) | \( 6x \) |
+To analyze how step size (h) affects accuracy
 
-These exact derivatives are used to compute numerical errors.
+To study truncation and numerical errors
 
----
+Test Functions
 
-## 📐 Mathematical Formulas
+The following functions are used for testing:
 
-### First Derivative
+Function	First Derivative	Second Derivative
+sin(x)	cos(x)	−sin(x)
+e^x	e^x	e^x
+x³	3x²	6x
 
-\[
-\text{Forward: } f'(x) \approx \frac{f(x+h)-f(x)}{h}
-\]
+These analytical derivatives are used as the reference for error calculation.
 
-\[
-\text{Backward: } f'(x) \approx \frac{f(x)-f(x-h)}{h}
-\]
+Finite Difference Formulas
+First Derivative
 
-\[
-\text{Central: } f'(x) \approx \frac{f(x+h)-f(x-h)}{2h}
-\]
+Forward Difference
+f′(x) ≈ ( f(x + h) − f(x) ) / h
 
-### Second Derivative
+Backward Difference
+f′(x) ≈ ( f(x) − f(x − h) ) / h
 
-\[
-\text{Forward: } f''(x) \approx \frac{f(x+2h)-2f(x+h)+f(x)}{h^2}
-\]
+Central Difference
+f′(x) ≈ ( f(x + h) − f(x − h) ) / (2h)
 
-\[
-\text{Backward: } f''(x) \approx \frac{f(x)-2f(x-h)+f(x-2h)}{h^2}
-\]
+Forward and Backward methods have an error of order O(h),
+while Central Difference has error of order O(h²), making it more accurate.
 
-\[
-\text{Central: } f''(x) \approx \frac{f(x+h)-2f(x)+f(x-h)}{h^2}
-\]
+Second Derivative
 
----
+Forward Difference
+f″(x) ≈ ( f(x + 2h) − 2f(x + h) + f(x) ) / h²
 
-## 📊 Error Calculation
+Backward Difference
+f″(x) ≈ ( f(x) − 2f(x − h) + f(x − 2h) ) / h²
+
+Central Difference
+f″(x) ≈ ( f(x + h) − 2f(x) + f(x − h) ) / h²
+
+Step Sizes Used
+
+The following step sizes are used in the experiment:
+
+h = 0.1, 0.05, 0.01, 0.005, 0.001
+
+These values help analyze how the numerical error changes as h decreases.
+
+Error Calculation
 
 For each method, the absolute error is computed as:
 
-\[
-\text{Error} = |\text{Exact Value} - \text{Numerical Value}|
-\]
+Error = | Exact Value − Numerical Value |
 
 Errors are calculated separately for:
-- Forward difference
-- Backward difference
-- Central difference
 
----
+Forward Difference
 
-## 🖥 How to Run the Program
+Backward Difference
 
-### Compile
-```bash
-g++ main.cpp -o main
-The program generates CSV files containing numerical error data.
+Central Difference
 
-Format:
+Sample Numerical Result
+
+Example for f(x) = sin(x) at x = 1
+
+h	Forward Error	Backward Error	Central Error
+0.1	0.04294	0.04114	0.00090
+0.05	0.02126	0.02081	0.00023
+0.01	0.00422	0.00420	0.00001
+
+This table shows that the Central Difference method gives much smaller error.
+
+Data Description
+
+The program generates CSV files containing:
 
 h, forward_error, backward_error, central_error
 
+These data files are used to draw Error vs Step Size (h) graphs for all methods.
 
-These CSV files are used to plot Error vs Step Size (h) graphs in log–log scale.
+Graph Interpretation
 
-📈 Graph Analysis
+From the Error vs h (log–log) graphs:
 
-The error vs step size graphs show:
+Forward and Backward methods show linear decrease in error
 
-Forward and Backward methods → First-order accuracy 
-𝑂
-(
-ℎ
-)
-O(h)
+Central Difference shows much faster decrease
 
-Central method → Second-order accuracy 
-𝑂
-(
-ℎ
-2
-)
-O(h
-2
-)
+Central Difference is the most accurate method
 
-This demonstrates that the central difference method is more accurate.
+Conclusion
 
-👥 Team Collaboration
+Finite difference methods provide an effective way to approximate derivatives when analytical solutions are not available.
 
-This project was developed collaboratively using GitHub.
-Each team member contributed by working on different parts of the code,
-documentation, data analysis, and presentation.
+Among the three methods, the Central Difference Method gives the best accuracy for both first and second derivatives because of its higher order of convergence.
 
-🎯 Conclusion
-
-Finite difference methods provide an effective way to approximate derivatives.
-Among the methods tested, the central difference method gives the highest
-accuracy for both first and second derivatives.
+This project successfully demonstrates how numerical differentiation accuracy depends on step size and method selection.
